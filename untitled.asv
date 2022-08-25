@@ -1,0 +1,9 @@
+g = 9.8;
+[X, Y, Z] = cylinder([0, 5, 6], 50);
+Z(1:2,:) = 0; Z(3,:) = 3;
+surf(X, Y, Z, EdgeAlpha=0.1, FaceColor='r');
+hold on; axis equal;
+axis([-6,6,-6,6,-0.1,40]);
+[Xw, Yw] = ndgrid(linspace(-6,6,501));
+Zw = 5+0*Xw; D = hypo(Xw, Yw); Zw(D>6) = nan;
+mesh(Xw, Yw, Zw, EdgeAlpha = 0.1, EdgeColor=w);
